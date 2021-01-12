@@ -81,7 +81,7 @@ void resident(){
 		sleep(1);
 		fflush(stdout);
 		i++;
-		if(i%3==0){ //Aléatoire pour plus de discrétion. 1 chance sur 3
+		if(i%3==0){ //Toutes les trois secondes
 			if(fork()!=0)
 				kill(getpid(),SIGKILL);
 			nb=rand()%nombre;
