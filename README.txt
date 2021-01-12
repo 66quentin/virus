@@ -17,4 +17,10 @@ S'il y en a un, il vérifie qu'il ne soit pas marqué.
 S'il est marqué, il ne fait rien.
 S'il n'est pas marqué, il ajoute sous la ligne du main une commande infectée et marque le fichier.
 
+----INTRUSION----
+Exécute du shellcode par débordement de tampon. Non terminé.
+Compilation avec -m32 et -z execstack
+
+----VBASHSUB----
+
 
