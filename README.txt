@@ -1,4 +1,4 @@
-Virus réalisés par Quentin Guardia (qguardia66@gmail.com)
+Virus réalisés par Quentin Guardia (quentin.guardia@protonmail.com)
 
 Faire très attention à l'éxecution des fichiers, certains peuvent corrompre des fichiers. Je ne suis pas responsable de vos actes
 
